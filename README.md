@@ -6,4 +6,5 @@
 * Run "mvn clean intall" from root directory
 * Move to target directory, and copy the RESTfulExample.war
 * Place it inside webapps folder of tomcat server
+* Create a file userinfo.txt, inside bin folder of tomcat server
 * Access http://localhost:8080/RESTfulExample/ui/login.html
