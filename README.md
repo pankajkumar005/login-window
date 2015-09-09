@@ -6,4 +6,4 @@
 * Run "mvn clean intall" from root directory
 * Move to target directory, and copy the RESTfulExample.war
 * Place it inside webapps folder of tomcat server
-* Access http://localhost:9090/RESTfulExample/ui/login.html
+* Access http://localhost:8080/RESTfulExample/ui/login.html
