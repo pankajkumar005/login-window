@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
+    <link rel='stylesheet' href='assets/style.css' />
+
+  </head>
+  <body>
+  <script type="text/x-handlebars" data-template-name="login">
+    <section id="loginapp">
+      <div class="container">        
+        <div class="shadow">
+          <h2>{{title}}</h2>    
+            <form  class="input-form" id="loginForm" {{action 'login' on='submit'}}>
+                <div class="form-group">
+                    <label for="inputName">User Name</label>
+                    <span class="name-alert">(The name should have at least 3 letters.)</span>
+                    {{input type="text" class="form-control" value=userName placeholder="User Name"}}
+                    
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Password</label>
+                    {{input type="password" class="form-control" value=password placeholder="Password"}}                    
+                </div>                
+                <button type="submit" class="btn btn-primary" {{bind-attr disabled=disableLogin}}>Login</button>
+                {{#link-to 'register'}}Register{{/link-to}}
+            </form>
+            <div class="alert alert-error" role="alert">{{loginError}}</div>
+        </div>          
+      </div>
+    </section>
+    
+  </script>
+  <script type="text/x-handlebars" data-template-name="register">
+    <section id="register">
+    <div class="container">        
+      <div class="shadow">
+        <h2>{{title}}</h2>    
+          <form  class="input-form" id="registerForm" {{action 'submit' on='submit'}} enctype='multipart/form-data'>
+              <div class="form-group">
+                  <label>User Name</label>
+                  <span class="name-alert">(The name should have at least 3 letters.)</span>
+                  {{input type="text" class="form-control" value=userName placeholder="User Name" action="isTyping" on="key-press"}}
+                  <button {{action 'checkName'}}>Check</button>
+                  {{#if userName}}
+                    {{#if isChecked}}
+                      {{#if validName}}
+                        <div class="alert alert-error" role="alert">The User Name {{userName}} is Available</div>    
+                      {{else}}
+                        <div class="alert" role="alert">The User Name {{userName}} is Not Available</div>    
+                      {{/if}}                  
+                    {{/if}}
+                  {{/if}}                  
+                  
+              </div>
+              <div class="form-group">
+                  <label>Password</label>
+                  {{input type="password" class="form-control" value=password placeholder="Password"}}                    
+              </div>
+              <div class="form-group">
+                  <label>Confirm Password</label>
+                  {{input type="password" class="form-control" value=confirmPassword placeholder="Password"}}  
+                  {{#if passwordMatch}}
+                    <div class="alert alert-error" role="alert">{{passwordMatch}}</div>    
+                  {{/if}}
+              </div>                
+              <div class="form-group">
+                  <label>Email</label>
+                  {{input type="text" class="form-control" value=email placeholder="Email"}}                    
+              </div>              
+              <button type="submit" class="btn btn-primary" {{bind-attr disabled=inValidInputs}}>Register</button>
+              <button type="reset" {{action 'reset'}} class="btn btn-primary" {{bind-attr disabled=disableReset}}>Reset</button>
+              {{#link-to 'login'}}Login{{/link-to}}
+          </form>
+          {{#if errorMsg}}
+            <div class="alert alert-error" role="alert">{{errorMsg}}</div>    
+          {{/if}}
+          {{#if successMsg}}
+            <div class="alert alert-success" role="alert">{{successMsg}}</div>    
+          {{/if}}
+      </div>          
+    </div>
+     
+    </section>
+  </script>
+  <script type="text/x-handlebars" data-template-name="authenticated">
+    <section id="loggedIn">
+      <div class="container">        
+        <div class="shadow">
+          <h2>{{title}} <span> {{userName}}</span></h2>    
+            <div>
+              <label>User Name</label> <span>{{userName}}</span>
+            </div>
+            <div>
+              <label>Email</label> <span>{{email}}</span>
+            </div>
+            
+            <button type="logout" {{action 'logout'}} class="btn btn-primary">Logout</button>
+            
+        </div>          
+      </div>
+    </section>
+  </script>
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">All Rights Reserved. © 2015.</p>
+    </div>
+  </footer>
+  <script src="js/libs/jquery-1.11.2.min.js"></script>
+  <script src="js/libs/handlebars-v1.3.0.js"></script>
+  <script src="js/libs/ember.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/application.js"></script>
+  <script src="js/router.js"></script>  
+  <script src="js/controllers/register-controller.js"></script>
+  <script src="js/controllers/login-controller.js"></script>  
+</body>
+</html>
