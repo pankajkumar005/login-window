@@ -73,8 +73,6 @@ public class UserService {
 		if(valid) {
 			resultObject.put("email", email);
 			resultObject.put("userName", userName);
-		} else {
-
 		}
 		return resultObject;
 	}
