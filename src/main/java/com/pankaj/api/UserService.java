@@ -35,6 +35,11 @@ public class UserService {
 	public static boolean checkUserName(String userName) throws IOException, JSONException{
 		boolean found = false;
 		String sCurrentLine;
+		File file = new File("userinfo.txt");
+		// if file doesnt exists, then create it
+		if (!file.exists()) {
+			file.createNewFile();
+		}
 		BufferedReader br = new BufferedReader(new FileReader("userinfo.txt"));
 		while ((sCurrentLine = br.readLine()) != null) {
 			String[] userinfo = sCurrentLine.split(",");
