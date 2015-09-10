@@ -19,7 +19,6 @@ import com.sun.jersey.test.framework.WebAppDescriptor;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.ClientResponse.Status;
 
-import javax.ws.rs.client.Entity;
 
 import com.sun.jersey.api.core.ClassNamesResourceConfig;
 import com.sun.jersey.spi.container.servlet.WebComponent;
